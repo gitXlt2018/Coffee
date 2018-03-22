@@ -1,0 +1,388 @@
+/*
+* @Author: admin
+* @Date:   2017-12-05 09:52:14
+* @Last Modified by:   谢柳婷
+* @Last Modified time: 2017-12-09 15:38:44
+*/
+*{
+	margin:0px;
+	padding: 0px;
+	text-decoration: none;
+}
+
+.header{
+	width:100%;
+	height:90px;
+	background: rgba(0,0,0,0.6);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 9999;
+}
+/* logo部分 */
+.header .logo{
+	width:147px;
+	height: 143px;
+	position:absolute;
+	left:50%;
+	margin-left: -73.5px;	
+}
+.header .logo img{
+	width:147px;
+	height: 143px;
+}
+/* 导航部分 */
+.header .header_nav{
+	width: 1200px;
+	height: 90px;
+	margin:0 auto;
+}
+.header .header_nav .nav_fl{
+	width: 526px;
+	height: 90px;
+	float: left;
+
+}
+.header .header_nav .nav_fr{
+	width: 526px;
+	height: 90px;
+	float: right;
+
+}
+.header_nav .nav_fl .nav{
+	padding-left: 80px;
+}
+.header_nav .nav_fr .nav{
+	padding-right: 60px;
+}
+.header_nav ul{
+	width: 300px;
+	height: 90px;
+	margin:0 auto;
+}
+.header_nav ul li.navitem{
+	padding:0 30px;
+	float:left;
+	position:relative;
+}
+.header_nav ul li.navitem a{
+	font-size:14px;
+	color:#fff;
+}
+.header_nav ul li.navitem:first-child{
+	background:url(../images/icon/icon_1.png)no-repeat right center;
+}
+.header_nav .nav span{
+	display: inline-block;
+	line-height: 90px;
+	text-align: center;
+	font-size: 16px;
+	color:#fff;
+	transition:all 0.3s;
+}
+.header_nav .nav li.navitem span a{
+	display: inline-block;
+	line-height: 90px;
+	text-align: center;
+	font-size: 16px;
+	color:#fff;
+	transition:all 0.3s;
+}
+.header_nav ul li.navitem ul{
+	position:absolute;
+	top:100px;
+	width: 160px;
+	border-top:3px solid #838383;
+	background:rgba(0,0,0,0.7);
+	opacity:0;
+	transition:all 0.3s;
+}
+.header_nav ul li.navitem ul li{
+	border-bottom: 1px solid #2e2f29;
+}
+.header_nav ul li.navitem ul li a{
+	transition:all 0.3s;
+	padding:14px 30px;
+	width: 100px;
+	height: 20px;
+	background:rgba(0,0,0,0.8);
+	display:block;
+	color:#bbb9b9;
+	font-size:12px;
+}
+.header_nav ul li.navitem ul li a p{
+	transition:all 0.3s;
+	position:relative;
+	left:0px;
+	color:#bbb9b9;
+	font-size:12px;
+}
+/* banner广告部分 */
+
+section{
+	height: auto;
+	background:#f5eeec;
+}
+.banner{
+	width: 100%;
+	position:relative;
+	height:377px;
+	background:url(../images/banner03.png)no-repeat center center;
+	background-size: auto 100%;
+	overflow:hidden;
+}
+.banner h3{
+	display:block;
+	font-size:48px;
+	color:#fff;
+	text-align:center;
+	font-family: 黑体;
+	margin-top:210px;
+
+}
+.coffee_nav{
+	width: 100%;
+	height: 36px;
+	padding:18px 0px;
+	background:#f8f8f8;
+	border-bottom:1px solid #e5e5e5;
+}
+
+.coffee_nav .content{
+	width: 1200px;
+	height: 35px;
+	margin: 0 auto;
+}
+.coffee_nav .content h3{
+	float:left;
+	color:#35978f;
+	font-size:22px;
+	font-weight: bold;
+	padding-left:35px;
+	background:url(../images/icon/icon_coffee.png)no-repeat left center;
+}
+.coffee_nav .content .name{
+	float:right;
+	width:270px;
+	height: 35px;
+}
+.coffee_nav .content .name p{
+	float:left;
+	padding:5px;
+	color:#35978f;
+}
+.coffee_nav .content .name span a{
+	display:block;
+	float:right;
+	padding:5px;
+	color:#35978f;
+}
+.manage{
+	width: 1200px;
+	height:800px;
+	margin: 0 auto;
+	background:#f8f8f8;
+	overflow:hidden;
+}
+.manage a{
+	color:#000;
+}
+.manage .nav{
+	width: 900px;
+	height:35px;
+	margin: 0 auto;
+	padding: 15px;
+	background:#f8f8f8;
+}
+.manage .nav form{
+	width:750px;
+	display:block;
+	float:left;
+	margin-left:50px;
+
+}
+.manage .nav input{
+	width: 120px;
+	height: 25px;
+	outline: none;
+}
+.manage .nav .bt{
+	width: 100px;
+	height: 25px;
+	cursor: pointer;
+}
+.manage .nav .add{
+	width: 100px;
+	height: 25px;
+	float:right;
+	cursor: pointer;
+}
+
+.manage .list{
+	width: 800px;
+	height:800px;
+	margin:0 auto;
+}
+
+ .manage .list table {
+	margin-top: 6px;
+	border: solid 1px #d6dbe2;
+	background: #eff3f6;
+	border-bottom: 0;
+	margin-bottom: 40px;
+}
+.manage .list table thead th {
+	font-weight: 700;
+	background: #e4e7eb;
+	padding: 17px 0;
+	text-align: center;
+	border-bottom: solid 1px #d6dbe2;
+}
+.manage .list table td {
+	font-size: 14px;
+	padding: 15px 0;
+	text-align: center;
+	border:  1px solid #d6dbe2;
+}
+.manage .list table td a{
+	color:red;
+}
+.manage .list .dao{
+	width: 800px;
+	height: 35px;
+	padding:5px;
+	background:pink;
+}
+
+.manage .list .addType{
+	width: 500px;
+	height: 300px;
+	margin:100px auto 0px;
+}
+.manage .list .addType p{
+	margin-bottom:30px;
+	font-size:18px;
+}
+
+.manage .list .addType input{
+	width: 180px;
+	height: 30px;
+	margin-bottom: 20px;
+	outline: none;
+}
+.manage .list .addType .bt{
+	width: 100px;
+	height: 40px;
+	border:none;
+	padding:0px;
+	text-align:center;
+	line-height:40px;
+	cursor: pointer;
+}
+
+
+
+
+/* 底部*/
+footer{
+	width: 100%;
+	height:295px;
+	background:#2b2015;
+	overflow:hidden;
+} 
+footer .foot{
+	width: 1200px;
+	height:195px;
+	margin: 0 auto;
+	padding-bottom: 50px;
+}
+footer .foot .list{
+	width: 676px;
+	height: 184px;
+	float:left;
+	margin-top:55px;
+
+}
+footer .foot .phone{
+	float:left;
+	width: 165px;
+	height: 190px;
+	margin-top:55px;
+
+}
+footer .foot .ma{
+	width: 280px;
+	height: 125px;
+	margin-top:55px;
+	float:right;
+
+}
+footer .foot .list div{
+	float:left;
+	padding-right:75px;
+}
+footer .foot .list div h4{
+	font-size:14px;
+	color:#fff;
+}
+footer .foot .list div ul{
+	margin-top:20px;
+}
+footer .foot .list div ul li a{
+	font-family:"Microsoft YaHei";
+	font-size:12px;
+	color:#806d62;
+	display:block;
+	line-height:28px;
+}
+footer .foot .phone div:nth-of-type(2){
+	margin-top:20px;
+}
+
+footer .foot .phone h4{
+	font-size:14px;
+	color:#fff;
+}
+footer .foot .phone span{
+	color:#806d62;
+	font-size:12px;
+	display:block;
+	padding: 15px 0px;
+}
+footer .foot .phone .span{
+	font-size:24px;
+}
+footer .foot .ma ul{
+	width: 280px;
+	height: 125px;
+}
+footer .foot .ma ul li{
+	height: 162px;
+	float:left;
+
+}
+footer .foot .ma ul li:last-child{
+	margin-left:40px;
+}
+footer .foot .ma ul li span{
+	font-size:12px;
+	display:block;
+	text-align:center;
+	color:#fff;
+	margin-top:15px;
+
+}
+
+footer .address{
+	width: 100%;
+	height: 70px;
+	background:#20180f;
+	overflow:hidden;
+}
+
+footer .address p{
+	margin-left:100px;
+	margin-top:20px;
+	font-size:12px;
+	color:#806d62;
+}

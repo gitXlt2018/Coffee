@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="coffee.demo.mapper.DrinkMapper" >
+
+<!-- 一对一映射 -->
+  <resultMap id="BaseResultMap" type="coffee.demo.pojo.Drink" >
+    <id column="DRINK_ID" property="drinkId" jdbcType="DECIMAL" />
+    <result column="TYPE_ID" property="typeId" jdbcType="DECIMAL" />
+    <result column="DRINKNAME" property="drinkname" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    
+    <association property="drinkType" javaType="coffee.demo.pojo.Drinktype">
+    	<id column="TYPE_ID" property="typeId" jdbcType="DECIMAL" />
+    	<result column="TYPENAME" property="typename" jdbcType="VARCHAR" />    
+    </association>
+    
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DRINK_ID, TYPE_ID, DRINKNAME, PRICE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="coffee.demo.pojo.DrinkExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DRINK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from DRINK
+    where DRINK_ID = #{drinkId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from DRINK
+    where DRINK_ID = #{drinkId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="coffee.demo.pojo.DrinkExample" >
+    delete from DRINK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="coffee.demo.pojo.Drink" >
+    insert into DRINK (DRINK_ID, TYPE_ID, DRINKNAME, 
+      PRICE)
+    values (#{drinkId,jdbcType=DECIMAL}, #{typeId,jdbcType=DECIMAL}, #{drinkname,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="coffee.demo.pojo.Drink" >
+    insert into DRINK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="drinkId != null" >
+        DRINK_ID,
+      </if>
+      <if test="typeId != null" >
+        TYPE_ID,
+      </if>
+      <if test="drinkname != null" >
+        DRINKNAME,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="drinkId != null" >
+        #{drinkId,jdbcType=DECIMAL},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=DECIMAL},
+      </if>
+      <if test="drinkname != null" >
+        #{drinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="coffee.demo.pojo.DrinkExample" resultType="java.lang.Integer" >
+    select count(*) from DRINK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DRINK
+    <set >
+      <if test="record.drinkId != null" >
+        DRINK_ID = #{record.drinkId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.typeId != null" >
+        TYPE_ID = #{record.typeId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.drinkname != null" >
+        DRINKNAME = #{record.drinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DRINK
+    set DRINK_ID = #{record.drinkId,jdbcType=DECIMAL},
+      TYPE_ID = #{record.typeId,jdbcType=DECIMAL},
+      DRINKNAME = #{record.drinkname,jdbcType=VARCHAR},
+      PRICE = #{record.price,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="coffee.demo.pojo.Drink" >
+    update DRINK
+    <set >
+      <if test="typeId != null" >
+        TYPE_ID = #{typeId,jdbcType=DECIMAL},
+      </if>
+      <if test="drinkname != null" >
+        DRINKNAME = #{drinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where DRINK_ID = #{drinkId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="coffee.demo.pojo.Drink" >
+    update DRINK
+    set TYPE_ID = #{typeId,jdbcType=DECIMAL},
+      DRINKNAME = #{drinkname,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL}
+    where DRINK_ID = #{drinkId,jdbcType=DECIMAL}
+  </update>
+</mapper>
